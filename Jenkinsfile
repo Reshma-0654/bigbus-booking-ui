@@ -55,6 +55,13 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.war', fingerprint: true
             }
         }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying WAR file to Tomcat'
+                sh 'cp target/*.war /opt/tomcat/webapps/'
+            }
+        }
     }
 
     post {
