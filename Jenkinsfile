@@ -2,6 +2,10 @@ pipeline {
 
     agent any
 
+    tools {
+        maven 'maven'
+    }
+
     stages {
 
         stage('Checkout') {
@@ -51,7 +55,6 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.war', fingerprint: true
             }
         }
-
     }
 
     post {
@@ -67,7 +70,5 @@ pipeline {
         always {
             echo 'Pipeline Completed'
         }
-
     }
-
 }
