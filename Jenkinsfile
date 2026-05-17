@@ -6,8 +6,16 @@ pipeline {
 
         stage('Checkout') {
             steps {
-checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'gitcrede', url: 'https://github.com/Reshma-0654/bigbus-booking-ui.git']])
+                checkout scmGit(
+                    branches: [[name: '*/main']],
+                    extensions: [],
+                    userRemoteConfigs: [[
+                        credentialsId: 'github_creds',
+                        url: 'https://github.com/Reshma-0654/bigbus-booking-ui.git'
+                    ]]
+                )
             }
+        }
 
         stage('Validate') {
             steps {
